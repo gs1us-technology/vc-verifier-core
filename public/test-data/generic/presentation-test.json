@@ -1,0 +1,47 @@
+{
+    "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+    ],
+    "type": [
+        "VerifiablePresentation"
+    ],
+    "holder": "did:example:123",
+    "verifiableCredential": [
+        {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://w3id.org/vc-revocation-list-2020/v1"
+            ],
+            "id": "urn:uuid:80612f3d-a0d9-40f9-b2ae-84f0060f26f8",
+            "type": [
+                "VerifiableCredential"
+            ],
+            "issuer": "did:web:cbpvsvip-vc.gs1us.org",
+            "issuanceDate": "2023-04-18T19:12:26.549Z",
+            "credentialSubject": {
+                "id": "did:example:123"
+            },
+            "credentialStatus": {
+                "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1054",
+                "type": "RevocationList2020Status",
+                "revocationListIndex": 1054,
+                "revocationListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
+            },
+            "proof": {
+                "type": "Ed25519Signature2018",
+                "created": "2023-04-18T19:12:26Z",
+                "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc",
+                "proofPurpose": "assertionMethod",
+                "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..QFaFRnaG2wEdHUp0E9ruf0I3MzZsYbrGuDAAHoFilHkdp5nNK-yl9INqCuZWR3y3Ro5d3xyD5faXtddgqL_nDg"
+            }
+        }
+    ],
+    "proof": {
+        "type": "Ed25519Signature2018",
+        "created": "2023-04-18T19:44:13Z",
+        "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc",
+        "proofPurpose": "authentication",
+        "challenge": "test12",
+        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..L2En4P0urmjT7oaviUOrpIdM6APQKMU00yAO2PXt4gG1WcmGWmpoiktHO4jCQ7eGu9OXvNCRNph5Mqb2aT6FAg"
+    }
+}
