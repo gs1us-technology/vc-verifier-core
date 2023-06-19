@@ -1,0 +1,174 @@
+{
+    "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "type": [
+        "VerifiablePresentation"
+    ],
+    "verifiableCredential": [
+        {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://ref.gs1.org/gs1/vc/license-context",
+                {
+                    "name": "https://schema.org/name",
+                    "description": "https://schema.org/description",
+                    "image": "https://schema.org/image"
+                },
+                "https://w3id.org/security/suites/ed25519-2020/v1",
+                "https://w3id.org/vc-revocation-list-2020/v1"
+            ],
+            "id": "http://did-vc.gs1us.org/vc/license/00860005769414",
+            "type": [
+                "VerifiableCredential",
+                "GS1IdentificationKeyLicenseCredential"
+            ],
+            "issuer": "did:web:cbpvsvip-vc.gs1us.org",
+            "name": "GS1 Product License Key Credential",
+            "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is the Verifiable Product License Key Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid.",
+            "issuanceDate": "2021-05-11T10:50:36.701Z",
+            "credentialSubject": {
+                "id": "did:key:z6Mksk3ENVS8xt3ZJp53UHftjnWwyHh6yeoexYysDuy6upkV/1",
+                "organization": {
+                    "gs1:partyGLN": "0860005769407",
+                    "gs1:organizationName": "Healthy Tots"
+                },
+                "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/08",
+                "licenseValue": "00860005769414",
+                "alternativeLicenseValue": "00086000576941",
+                "identificationKeyType": "GTIN"
+            },
+            "credentialStatus": {
+                "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1307",
+                "type": "RevocationList2020Status",
+                "revocationListIndex": 1307,
+                "revocationListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
+            },
+            "proof": {
+                "type": "Ed25519Signature2020",
+                "created": "2023-06-15T16:11:23Z",
+                "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
+                "proofPurpose": "assertionMethod",
+                "proofValue": "zXTiTfd8PuYCJ7v3h7DPsrKt4Tm8K9rJV7dhCBf8izWqFqiHK3szwrxAbfuBSnnB7gxzkKmtRM1CuRkEvxQBQWhE"
+            }
+        },
+        {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://ref.gs1.org/gs1/vc/license-context",
+                "https://ref.gs1.org/gs1/vc/declaration-context",
+                "https://w3id.org/security/suites/ed25519-2020/v1",
+                {
+                    "name": "https://schema.org/name",
+                    "description": "https://schema.org/description",
+                    "image": "https://schema.org/image"
+                },
+                "https://w3id.org/vc-revocation-list-2020/v1"
+            ],
+            "issuer": "did:web:cbpvsvip-vc.gs1us.org",
+            "name": "GS1 Key Credential",
+            "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is the Verifiable Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid.",
+            "id": "did:key:z6MkfLgZtyPf6Rc9i1jFwNauzAsrS2Gsx6iCLCLiUjKjsDhK",
+            "type": [
+                "VerifiableCredential",
+                "KeyCredential"
+            ],
+            "credentialSubject": {
+                "id": "https://id.gs1.org/01/00860005769414",
+                "extendsCredential": "http://did-vc.gs1us.org/vc/license/00860005769414"
+            },
+            "credentialStatus": {
+                "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1308",
+                "type": "RevocationList2020Status",
+                "revocationListIndex": 1308,
+                "revocationListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
+            },
+            "issuanceDate": "2023-06-15T16:13:17Z",
+            "proof": {
+                "type": "Ed25519Signature2020",
+                "created": "2023-06-15T16:13:17Z",
+                "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
+                "proofPurpose": "assertionMethod",
+                "proofValue": "z1mw7gDttwVaTSqeNQ78uEJAsprgMAowir5RG3Pg1zFzWUMXPbRrQRYQfLAAAnLbD6UgqLCyedoLkHEPmK5REEfE"
+            }
+        },
+        {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://ref.gs1.org/gs1/vc/declaration-context",
+                "https://ref.gs1.org/gs1/vc/product-context",
+                {
+                    "name": "https://schema.org/name",
+                    "description": "https://schema.org/description",
+                    "image": "https://schema.org/image"
+                },
+                "https://w3id.org/security/suites/ed25519-2020/v1",
+                "https://w3id.org/vc-revocation-list-2020/v1"
+            ],
+            "id": "did:key:z6MkoMSHeqW9bzyW8VhP1h4CoMv3nhm6y7Y21mfAasXBsTYZ",
+            "type": [
+                "VerifiableCredential",
+                "ProductDataCredential"
+            ],
+            "issuer": "did:web:cbpvsvip-vc.gs1us.org",
+            "name": "GS1 Product Identification Credential",
+            "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. The product data credential is the Verifiable Credential that is shared with parties interested in the basic information associated with a product GTIN.",
+            "issuanceDate": "2021-05-11T10:50:36.701Z",
+            "credentialSubject": {
+                "id": "https://id.gs1.org/01/00860005769414",
+                "keyAuthorization": "did:key:z6MkfLgZtyPf6Rc9i1jFwNauzAsrS2Gsx6iCLCLiUjKjsDhK",
+                "product": {
+                    "gs1:brand": {
+                        "gs1:brandName": "Healthy Tots"
+                    },
+                    "gs1:productDescription": "Library Test Product 1",
+                    "gs1:image": {
+                        "gs1:referencedFileURL": "https://digitalassets.pepsico.com/m/3bf680b73831037c/Std_Res-00012000000171_C1N1.jpg?download"
+                    },
+                    "gs1:gpcCategoryCode": "10000266",
+                    "gs1:netContent": {
+                        "gs1:value": "175",
+                        "gs1:unitCode": "LBS"
+                    },
+                    "gs1:targetMarket": {
+                        "gs1:targetMarketCountries": [
+                            {
+                                "gs1:countryCode": "MX"
+                            },
+                            {
+                                "gs1:countryCode": "CA"
+                            },
+                            {
+                                "gs1:countryCode": "US"
+                            }
+                        ]
+                    }
+                }
+            },
+            "credentialStatus": {
+                "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1309",
+                "type": "RevocationList2020Status",
+                "revocationListIndex": 1309,
+                "revocationListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
+            },
+            "proof": {
+                "type": "Ed25519Signature2020",
+                "created": "2023-06-15T16:15:52Z",
+                "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
+                "proofPurpose": "assertionMethod",
+                "proofValue": "zN2XTguYYxHkhoQGhWfoiLM8rqqtH47opMJ3pbsm1AbVmD7HqEboPW3wP8dgDjz2MsvDTqMQ3FxD1YTfiff6QWwF"
+            }
+        }
+    ],
+    "id": "urn:uuid:e1a1jr3khwosidoifr9w",
+    "holder": "urn:uuid:e1a1jr3khwosidoifr9w:holder",
+    "proof": {
+        "type": "Ed25519Signature2020",
+        "created": "2023-06-15T16:22:05Z",
+        "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
+        "proofPurpose": "authentication",
+        "challenge": "tst123",
+        "proofValue": "z21jhZeY4g8Vey5E3CtCaJWdUEXg9KVuWaegyHyHyuRjbMim3AyHBPgfiSJFTTHpmoKFUccJ5GNvimmU5VbCAaBVj"
+    }
+}

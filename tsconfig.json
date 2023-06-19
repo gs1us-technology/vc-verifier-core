@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "lib": ["ES2022"],
+      "module": "ES2022",
+      "moduleResolution": "node",
+      "target": "ES2022",
+      "types": ["node", "jest"],
+      "rootDir": "./src",
+      "importHelpers": false,
+      "declaration": true,
+      "declarationDir": "./dist",
+      "sourceMap": true,
+      "strict": true,
+      "allowSyntheticDefaultImports": true, 
+      "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+      "skipLibCheck": true, 
+      "outDir": "dist",
+      "checkJs": true,
+      "allowJs": true
+    },
+    "include": ["src/**/*", "src/tests/index-test.ts", "typings-custom", "src/tests/**/**.ts"],
+    "exclude": [
+        "node_modules"
+      ]
+  }

@@ -1,0 +1,46 @@
+{
+    "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://ref.gs1.org/gs1/vc/license-context",
+        {
+            "name": "https://schema.org/name",
+            "description": "https://schema.org/description",
+            "image": "https://schema.org/image"
+        },
+        "https://w3id.org/security/suites/ed25519-2020/v1",
+        "https://w3id.org/vc-revocation-list-2020/v1"
+    ],
+    "id": "http://did-vc.gs1us.org/vc/license/00860005769414",
+    "type": [
+        "VerifiableCredential",
+        "GS1IdentificationKeyLicenseCredential"
+    ],
+    "issuer": "did:web:cbpvsvip-vc.gs1us.org",
+    "name": "GS1 Product License Key Credential",
+    "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is the Verifiable Product License Key Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid.",
+    "issuanceDate": "2021-05-11T10:50:36.701Z",
+    "credentialSubject": {
+        "id": "did:key:z6Mksk3ENVS8xt3ZJp53UHftjnWwyHh6yeoexYysDuy6upkV/1",
+        "organization": {
+            "gs1:partyGLN": "0860005769407",
+            "gs1:organizationName": "Healthy Tots"
+        },
+        "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/08",
+        "licenseValue": "00860005769414",
+        "alternativeLicenseValue": "00086000576941",
+        "identificationKeyType": "GTIN"
+    },
+    "credentialStatus": {
+        "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1307",
+        "type": "RevocationList2020Status",
+        "revocationListIndex": 1307,
+        "revocationListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
+    },
+    "proof": {
+        "type": "Ed25519Signature2020",
+        "created": "2023-06-15T16:40:33Z",
+        "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "zdfg3fzVATTiSUVuLpNVc1bvfjRKMGEcxQPmGNozYfn91mgx5EPR9EX8PcRTJJJy6w7UfQAhqAaxMwzjm68Eb1Kv"
+    }
+}
