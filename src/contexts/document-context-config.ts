@@ -12,9 +12,6 @@ import { gs1OrganizationContext } from './gs1/json-ld/gs1_organization-context.j
 import { gs1TradeItemContext } from './gs1/json-ld/gs1_trade_item_context.js';
 import { gs1ProductContext } from './gs1/json-ld/gs1_product_context.js';
 
-// GS1 Prefix Context Documents
-import { prefixLicenceCredential08 } from './gs1/prefix/08.js';
-
 // Traceability Specific Context Documents
 import { traceability_v1 } from './traceability/traceability-v1.js'
 

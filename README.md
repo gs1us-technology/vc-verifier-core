@@ -1,14 +1,18 @@
 # Overview 
-The GS1 US Decentralized Identifier & Verifiable Credentials solution has been created to provide guidance on how to verify Verifiable Credentials (VC) issued for the GS1 Verifiable Credentials ecosystem. 
+The GS1 US Decentralized Identifier & Verifiable Credentials solution has been created to provide guidance on how to verify Verifiable Credentials (VC) issued for the GS1 Verifiable Credentials Digital License ecosystem.
 
-Currently this solution is built for the [WC3 Verifiable Credentials Data Model 1.1](https://www.w3.org/TR/vc-data-model) and the validation rules defined in the [GS1 Data Model](https://ref.gs1.org/gs1/vc/data-model) to validate the root of trust with GS1 issued credentials.
+The GS1 License ecosystem ensures globally unique identification of products, asserts, locations, and entities for global trade. The GS1 Digital license ecosystem expresses existing licenses as W3C verifiable credentials. By assembling a chain of these credentials, product, location, and asset assertions can be digitally verified as authentic. This library supports the validation of these credentials chains.
+
+Currently this solution is built for the [WC3 Verifiable Credentials Data Model 1.1](https://www.w3.org/TR/vc-data-model) and the GS1 level four validation rules defined in the [GS1 Data Model](https://ref.gs1.org/gs1/vc/data-model) to validate the root of trust with GS1 issued credentials.
 
 The GS1 US Verifiable Credentials Verification solution is divided into two libraries. 
 
 - [vc-verifier-core](https://github.com/gs1us-technology/vc-verifier-core): This is the core library for verifying GS1 US Based Verifiable Credentials. This library is the main library to use for verifying VCs. The library will perform proof and revocation checks on all presented VCs. 
 - [vc-verifier-rules](https://github.com/gs1us-technology/vc-verifier-rules): This is the rules library for verifying GS1 US Based Verifiable Credentials. This library will validate GS1 based VCs and ensure they follow the level four business rules defined by the GS1 Data Model Document. 
 
-**Notes**: To run the libraries locally you will need to clone both repos into a parent Folder (e.g. gs1-us). The vc-verifier-core library has a dependency on the vc-verifier-rules and requires running a local NPM Install. See the using the library section for more details. 
+**Notes**: To run the libraries locally you will need to clone both repos into a parent Folder (e.g. gs1-us). The vc-verifier-core library has a dependency on the vc-verifier-rules and requires running a local NPM Install. 
+
+See the using the library section for more details. 
 
 # Understanding Decentralized Identifiers
 ## What is a DID
@@ -103,26 +107,26 @@ Here is the DID Document for the GS1 US DID. The key components of the DID Docum
 ```
 
 When a Verifiable Credential is issued the Public and Private key for the DID Document is used to generate a crypographic proof that is included in the signed Verifiable Credential. This proof is used during verification to identify 
-the verificationMethod and assoicated public key to use to validate the Verifiable Credential.
+the verificationMethod and associated public key to use to validate the Verifiable Credential.
 
-The other main component from the DID Document is the services section. Which defines the different types of services supported by the DID. For the GS1 US DID, we support the Traceability API End Point. 
+The other main component from the DID Document is the services section. This section defines the different types of services supported by the DID. For the GS1 US DID, we support the Traceability API End Point. 
 
 # Verifiable Credentials
 
 ## What is a Credential 
 
-A set of one or more claims made by an issuer. A verifiable credential is a tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to build verifiable presentations, which can also be cryptographically verified.
+A credential is a set of one or more claims made by an issuer. A verifiable credential is a tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to build verifiable presentations, which can also be cryptographically verified.
 
 ![Screenshot](./content/vc.png)
 
 - Credential Metadata
-  - includes the unique ID of the credential, information about the subject or holder, information about the issuer, an expiration date, and the status of the credential
+  - Includes the unique ID of the credential, information about the subject or holder, information about the issuer, an expiration date, and the status of the credential
 - Claims
-  - asserted properties or qualifications about the subject
-  - there can one or more claims in a single VC
+  - Asserted properties or qualifications about the subject
+  - There can one or more claims in a single VC
 - Proofs
-  - this is the cryptographic signature of the issuer
-  - the verifier will used this information to verify the issuer signature and ensure the VC has not be altered.
+  - This is the cryptographic signature of the issuer
+  - The verifier will used this information to verify the issuer signature and ensure the VC has not be altered.
   
 ## Example Verifiable Credential
 ``` JSON
@@ -174,7 +178,7 @@ A set of one or more claims made by an issuer. A verifiable credential is a tamp
 
 # Library Runtime
 
-The library is a JavaScript based NPM package that is built on top of the WC3 standards libraries provided by Digital Bazaar. The library can be consumed directly using the library index.js file or using the bundled and minified version of the library. 
+The library is a JavaScript ES Module (EMS) based NPM package that uses the WC3 standards VC libraries provided by Digital Bazaar. To consume the library directly you can **Import** any of the Functions or Types exported by the libraries src/index.ts file. 
 
 The library requires the following environment:
 - Node - v18.16.1+
@@ -182,9 +186,9 @@ The library requires the following environment:
 
 # Repo Folders
 - `public`: Sample and Test Credentials used by the library. 
-- `src\contents`: JSON-LD and DID Documents required by the library including the standard WC3 JSON-LD files, the GS1 Data Model JSON-LD files, and other dependent 
+- `src\contexts`: JSON-LD and DID Documents required by the library including the standard WC3 JSON-LD files, the GS1 Data Model JSON-LD files, and other dependent 
 - `src\lib`: The main code for the GS1 US vc-verifier-core JavaScript library.
- - `index.ts`: Test Suite for testing the library
+ - `src\tests\index-test.ts`: Test Suite for testing the library
 
 # Running the Library Locally 
 To use the GS1 US Decentralized Identifier & Verifiable Credentials solution you will need to clone both the [vc-verifier-core](https://github.com/gs1us-technology/vc-verifier-core) and [vc-verifier-rules](https://github.com/gs1us-technology/vc-verifier-rules) libraries. 
@@ -202,9 +206,7 @@ npm install
 npm install  ../vc-verifier-rules
 npm run dev
 ``` 
-Note: 'npm install ../vc-verifier-rules' is required for loading the `vc-verifier-rules` project so that the `vc-verifier-core`
-
-To use the GS1 US Library add a `require` reference to the `index.js` file in the library. This will allow you to verify GS1 credentials. 
+Note: `npm install ../vc-verifier-rules` is required for loading the `vc-verifier-rules` project into the `vc-verifier-core` node modules folder. 
 
 Now that both libraries are setup and running locally from the top level command line for `vc-verifier-core` running the following to execute the libraries test suite.
 
@@ -212,32 +214,201 @@ Now that both libraries are setup and running locally from the top level command
 node .
 ``` 
 
+# Testing the Library
+The `vc-verifier-core` library includes a number of integration tests to validate different verifiable credentials scenarios. These include tests focus on proof verification, revocation status checking, and GS1 based credential validation. 
+
+The following are two verification scenarios include with the library. To see all the test scenarios review the `src\tests\index-test.ts` file.
+
+## Organization Verifiable Credential
+Validate the GS1 credential chain starting with a GS1 Organization, it's associated Key credential and Company Prefix credential. During this validation a GS1 License Prefix credential issued by GS1 Global will be resolved. This is done to validate the complete root of trust for GS1 issued credentials.
+
+``` 
+node . -test organization
+``` 
+
+Output From Tests: 
+
+The presentation submitted has passed all three types of verification. Inside of the `credentialResults` array there will be an item for each verifiable credential included within the presentation. 
+
+``` 
+{
+  "verified": true,
+  "result": {
+    "verified": true,
+    "verifications": [
+      {
+        "title": "Proof",
+        "status": "good"
+      },
+      {
+        "title": "Revocation",
+        "status": "good"
+      },
+      {
+        "title": "GS1CredentialValidation",
+        "status": "good"
+      }
+    ],
+    "credentialResults": [
+      {
+        "verified": true,
+        "credentialId": "http://did-vc.gs1us.org/vc/license/08600057694",
+        "credentialName": "GS1CompanyPrefixLicenseCredential",
+        "credentialValidationRules": [
+          {
+            "code": "VS-100",
+            "rule": "Verification Status",
+            "isValid": true
+          }
+        ]
+      },
+      {
+        "verified": true,
+        "credentialId": "did:key:z6MkrSXAsv2UTtNp3eZv8ypKNupbpYEqmBxpqDF994EhxQAk",
+        "credentialName": "KeyCredential",
+        "credentialValidationRules": [
+          {
+            "code": "VS-100",
+            "rule": "Verification Status",
+            "isValid": true
+          }
+        ]
+      },
+      {
+        "verified": true,
+        "credentialId": "did:key:z6Mkp5zGya5YjRVdAk4iu9vGb29Cy67gZ6YwCxMH8scsLRbq",
+        "credentialName": "OrganizationDataCredential",
+        "credentialValidationRules": [
+          {
+            "code": "VS-100",
+            "rule": "Verification Status",
+            "isValid": true
+          }
+        ]
+      }
+    ]
+  }
+}
+``` 
+
+## Verifiable Credential That Fails Validation
+Validate the GS1 credential chain starting with a GS1 Product Data Credential, it's associated Key credential and Company Prefix credential. During this validation a GS1 License Prefix credential issued by GS1 Global will be resolved. This is done to validate the complete root of trust for GS1 issued credentials.
+
+This test scenario has been setup to fail one of the GS1 Credential validation rules. 
+
+``` 
+node . -test gs1_validation_chain_error
+``` 
+
+Output From Tests: 
+
+The presentation submitted includes a verifiable Credential that fails one of the GS1 Credential validation rules. The overall verified status for the presentation will return false. Inside of the result property you should see that the Proof and Revocation Checks pass. However, the GS1CredentialValidation has failed. To see the failure review the `credentialResults` array. The verifiable credentials that failed validation will have a verified status of `false` and include one or more credential validation rules errors. 
+
+``` 
+{
+  "verified": false,
+  "result": {
+    "verified": false,
+    "verifications": [
+      {
+        "title": "Proof",
+        "status": "good"
+      },
+      {
+        "title": "Revocation",
+        "status": "good"
+      },
+      {
+        "title": "GS1CredentialValidation",
+        "status": "bad"
+      }
+    ],
+    "credentialResults": [
+      {
+        "verified": true,
+        "credentialId": "http://did-vc.gs1us.org/vc/license/08600057694",
+        "credentialName": "GS1CompanyPrefixLicenseCredential",
+        "credentialValidationRules": [
+          {
+            "code": "VS-100",
+            "rule": "Verification Status",
+            "isValid": true
+          }
+        ]
+      },
+      {
+        "verified": true,
+        "credentialId": "did:key:z6MknHepGrjA2LnaxMw3yDp9SRYryLRKQ7GUMpFusYfwSdyW",
+        "credentialName": "KeyCredential",
+        "credentialValidationRules": [
+          {
+            "code": "VS-100",
+            "rule": "Verification Status",
+            "isValid": true
+          }
+        ]
+      },
+      {
+        "verified": false,
+        "credentialId": "did:key:z6MkumEzsmdv1ywQ5vHZ4LjgLZvR8jpofr46gipxUqxokvrT",
+        "credentialName": "ProductDataCredential",
+        "credentialValidationRules": [
+          {
+            "code": "VS-100",
+            "rule": "Verification Status",
+            "isValid": true
+          },
+          {
+            "code": "GS1-320",
+            "rule": "The data credential GS1 Digital Link does not match the Id in the Key Credential."
+          }
+        ]
+      }
+    ]
+  }
+}
+``` 
+## Test Command Line Options
+The integration test suite for the `vc-verifier-core` library includes a number of command line switches to make it easier to run different tests. 
+
+Test Suite Command Line Options
+- `node .`  Will run all the standard tests
+- `node . -all`  Will run all tests 
+- `node . -test TEST_NAME`  Will run an individual test
+- `node . -gs1`  Will run all the GS1 Credential Tests that pass validation
+- `node . -gs1 -error`  Will run all the GS1 Credential Tests that fail validation
+
 # Using the Library
-To use the GS1 US Decentralized Identifier & Verifiable Credentials core library in your own solution. Do a local 'npm install ../vc-verifier-core'. This will install the library and its depdeencies into your local node_modules folder. 
+To use the GS1 US Decentralized Identifier & Verifiable Credentials rules library in your own solution, do a local 'npm install ../vc-verifier-rule'. 
+
+This will install the library and its dependencies into your local node_modules folder. 
 
 ![Screenshot](./content/library_overview.png)
 
 ## Referencing the Library 
-Add the following to reference the library your local code.
+Add the following to reference the library your local code. Take note you may have to add **// @ts-ignore** above the from. This is override for when the libraries TypeScript Types can not be imported correctly.
+
 ``` typescript
-import { verificationErrorCode, 
-        verifyCredential,
+import { verifyCredential,
         verifyPresentation} 
     // @ts-ignore
     from '@gs1us/vc-verifier-core';
+
+
+// @ts-ignore
+import { VerifiableCredential, VerifiablePresentation, verificationResult } from '@gs1us/vc-verifier-rules'
+
 ``` 
 ## Library API
 The library includes two methods for verifying credentials.
 - `verifyPresentation` Is the main method and should be used when you have a signed presentation that contains the required GS1 credentials.
-- `verifyCredential` Is an additional method that can be called when you only have an array of raw credentials. Internally this method will generate an unsigned presentation to verify the credentials.
-
+- `verifyCredential` Is an additional method that can be called when you only have a single verifiable credentials. Internally this method will generate an unsigned presentation before validating the credential.
 
 ## Code Example
-Here is an example of calling the `verifyPresentation` method in the library. This will verify all the verifiable credentials included in the presentation. After the proof and revocation checks are performed on the verifiable credentials any GS1 credential's includes will be verified using the vc-verifier-rules library.
+Included below is an example of calling the `verifyPresentation` method in the library. This will verify all the verifiable credentials included in the presentation. After the proof and revocation checks are performed on the verifiable credentials any GS1 credential's includes will be verified using the vc-verifier-rules library.
 
 ``` typescript
-
-const testPresentation = getTestPresentation("company-prefix-organization-key-08.json");
+const testPresentation = getTestPresentation("company-prefix-product-data-00860005769421");
 const vcResult: verificationResult = await verifyPresentation(testPresentation);
 
 if (vcResult.verified === true) {
@@ -247,9 +418,50 @@ if (vcResult.verified === true) {
 ```
 
 ## Library Output 
-TBD
+The following types are the main output from the @gs1us/vc-verifier-core library. Both the `verifyPresentation` and  `verifyCredential` will return a result object called `verificationResult` that contains the status of the verifiable credential: Proof, Revocation and where applicable GS1 Credential validation status. 
 
-## Revocation Check 
-TBD
+Check the `verified` property of the return result. If true all the verifiable credentials passed to the library pass all levels of validation. If false one or more of the verifiable credentials could not be validated. When that happens check the `credentialValidationRules` property for any validation errors encountered during verification. 
 
+``` typescript
+// *****  Validation Rule Checks *****
+export type verificationCheck = {
+    status: "good" | "bad";
+    title: "Proof" | "Activation" | "Expired" | "Revocation" | "GS1CredentialValidation";
+}
 
+// Code and Rule Associated with GS1 Validation Rules - See lib/engine/gs1-credential-errors.ts for list of codes
+export type gs1CredentialValidationRule = {
+    code: string;
+    rule: string;
+}
+
+// *****  Verification Library Result Objects *****
+export type credentialResults = {
+    verified: boolean, 
+    credentialId: string,
+    credentialValidationRules?: gs1CredentialValidationRule[];
+}
+
+export type verificationResult = {
+    verified: boolean;
+    verifications?: verificationCheck[];
+    credentialResults?: credentialResults[];
+}
+```
+# Contribute
+This library is currently not supporting external PRs. If you run into an issue or have a suggest please post in the repo's issue board. 
+
+# License
+Copyright 2023 GS1 US
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

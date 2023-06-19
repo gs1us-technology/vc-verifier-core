@@ -53,18 +53,6 @@ const testVerify_key = async () : Promise<testResult> => {
    return { verified: vcResult.verified == true,  result: vcResult };
 }
 
- // Verify Sample (GLN) Key Credential VC
- const testVerify_key_product_invalid = async () : Promise<testResult>  => {
-   const vcResult: verificationResult = await verifyPresentation(getTestPresentation("company-prefix-product-key-invalid-08"));
-   return { verified: vcResult.verified == false,  result: vcResult };
-}
-
- // Verify Sample (GLN) Organization Credential VC
- const testVerify_product_invalid = async () : Promise<testResult>  => {
-   const vcResult: verificationResult = await verifyPresentation(getTestPresentation("company-prefix-product-data-invalid-08"));
-   return { verified: vcResult.verified == false,  result: vcResult };
-}
-
 // Test VC that fails proof verification
  const testVerify_fail = async () : Promise<testResult>  => {
    const vcResult: verificationResult = await verifyCredential(getTestCredential("credential-proof-fail"));
