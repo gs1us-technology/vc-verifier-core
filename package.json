@@ -1,5 +1,5 @@
 {
-  "name": "@gs1us-vc-verifier-core",
+  "name": "@gs1us/vc-verifier-core",
   "version": "1.0.0",
   "description": "GS1 US Core Verification Library for validating GS1 based verifiable credentials.",
   "main": "./dist/tests/index-test.js",

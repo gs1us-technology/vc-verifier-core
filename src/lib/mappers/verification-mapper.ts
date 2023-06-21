@@ -90,8 +90,24 @@ export async function createVerificationResult(verifiedResults: any, gs1RulesRes
             }
 
             return credentialResult;
-        });
+    });
 
+    // Add Results for Resolve Credentials that are not in the presentation
+    gs1RulesResultContainer?.result?.forEach((gs1RulesResult: gs1RulesResult) => { 
+        const gs1RulesResultResolveCredential = result.credentialResults.find((result: gs1RulesResult) => result.credentialId === gs1RulesResult.credentialId);
+
+        if (!gs1RulesResultResolveCredential) { 
+
+            const credentialResult: credentialResults = {
+                verified: gs1RulesResult.verified, 
+                credentialId: gs1RulesResult.credentialId,
+                credentialName: gs1RulesResult.credentialName,
+                credentialValidationRules: gs1RulesResult.Errors
+            }
+
+             result.credentialResults.push(credentialResult);
+        }
+    });
     
     if (result.verifications) {
         // Add Verifier Type(s)
