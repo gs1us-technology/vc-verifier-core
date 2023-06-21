@@ -379,25 +379,24 @@ Test Suite Command Line Options
 - `node . -gs1 -error`  Will run all the GS1 Credential Tests that fail validation
 
 # Using the Library
-To use the GS1 US Decentralized Identifier & Verifiable Credentials rules library in your own solution, do a local 'npm install ../vc-verifier-rule'. 
-
-This will install the library and its dependencies into your local node_modules folder. 
+To use the GS1 US Decentralized Identifier & Verifiable Credentials core and rules library in your own solution, you will need to do a local install of both libaries. 
 
 ![Screenshot](./content/library_overview.png)
 
+After setting up your application run the following install comamnds. This will install the libraries and its dependencies into your local node_modules folder. 
+``` JavaScript
+npm install ../vc-verifier-rules
+npm install ../vc-verifier-core
+```
 ## Referencing the Library 
-Add the following to reference the library your local code. Take note you may have to add **// @ts-ignore** above the from. This is override for when the libraries TypeScript Types can not be imported correctly.
+Add the following to reference the library in your local code. Take note you may have to add **// @ts-ignore** above the from. This is override for when the libraries TypeScript Types can not be imported correctly.
 
 ``` typescript
-import { verifyCredential,
-        verifyPresentation} 
-    // @ts-ignore
-    from '@gs1us/vc-verifier-core';
-
+// @ts-ignore
+import { verificationResult } from '@gs1us/vc-verifier-rules';
 
 // @ts-ignore
 import { VerifiableCredential, VerifiablePresentation, verificationResult } from '@gs1us/vc-verifier-rules'
-
 ``` 
 ## Library API
 The library includes two methods for verifying credentials.
@@ -405,9 +404,11 @@ The library includes two methods for verifying credentials.
 - `verifyCredential` Is an additional method that can be called when you only have a single verifiable credentials. Internally this method will generate an unsigned presentation before validating the credential.
 
 ## Code Example
-Included below is an example of calling the `verifyPresentation` method in the library. This will verify all the verifiable credentials included in the presentation. After the proof and revocation checks are performed on the verifiable credentials any GS1 credential's includes will be verified using the vc-verifier-rules library.
+Included below is an example of calling the `verifyPresentation` method in the library. This will verify all the verifiable credentials included in the presentation. After the proof and revocation checks are performed on the verifiable credentials any GS1 credential's included will be verified using the vc-verifier-rules library.
 
 ``` typescript
+// See the index-test.ts file in the vc-verifier-core code base for how to load a verifiable credential/presentation from a local JSON File 
+// Or provide your own verifiable credential/presentation to the verifyPresentation method. 
 const testPresentation = getTestPresentation("company-prefix-product-data-00860005769421");
 const vcResult: verificationResult = await verifyPresentation(testPresentation);
 
