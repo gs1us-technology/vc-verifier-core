@@ -97,8 +97,15 @@ export async function createVerificationResult(verifiedResults: any, gs1RulesRes
         const gs1RulesResultResolveCredential = result.credentialResults.find((result: gs1RulesResult) => result.credentialId === gs1RulesResult.credentialId);
 
         if (!gs1RulesResultResolveCredential) { 
-            const {credential, ...resultUpdate} = gs1RulesResult;
-            result.credentialResults.push(resultUpdate);
+
+            const credentialResult: credentialResults = {
+                verified: gs1RulesResult.verified, 
+                credentialId: gs1RulesResult.credentialId,
+                credentialName: gs1RulesResult.credentialName,
+                credentialValidationRules: gs1RulesResult.Errors
+            }
+
+             result.credentialResults.push(credentialResult);
         }
     });
     
