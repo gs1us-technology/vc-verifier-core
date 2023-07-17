@@ -1,5 +1,5 @@
 # Overview 
-The GS1 US Decentralized Identifier & Verifiable Credentials solution has been created to provide guidance on how to verify Verifiable Credentials (VC) issued for the GS1 Verifiable Credentials Digital License ecosystem.
+The GS1 US Decentralized Identifier & Verifiable Credentials solution has been created to provide guidance on how to verify Verifiable Credentials (VC) issued for the GS1 Verifiable Credentials Digital License ecosystem. The library is **FOR DEMONSTRATION PURPOSES ONLY: NOT TO BE USED FOR PRODUCTION GRADE SYSTEMS!**
 
 The GS1 License ecosystem ensures globally unique identification of products, asserts, locations, and entities for global trade. The GS1 Digital license ecosystem expresses existing licenses as W3C verifiable credentials. By assembling a chain of these credentials, product, location, and asset assertions can be digitally verified as authentic. This library supports the validation of these credentials chains.
 
