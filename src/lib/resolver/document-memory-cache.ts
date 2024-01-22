@@ -4,7 +4,10 @@ import axios from 'axios';
 import { getResolver } from './did-resolver-service.js';
 
 // Override for local error - unable to get local issuer certificate
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
+// process does not exist when running in browser
+if (typeof process !== 'undefined') {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
+}
 
 // Memory Cache to store resolve external DID Documents and verifiable credentials
 const documentMemoryCache = new Map();
