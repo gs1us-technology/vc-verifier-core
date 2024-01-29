@@ -85,6 +85,10 @@ export async function createVerificationResult(verifiedResults: any, gs1RulesRes
                 }
             }
 
+            if (credentialResult.error?.length > 0) {
+                credentialResult.verified = false;
+            }
+
             if (!credentialResult.verified) {
                 result.verified = false;
             }
