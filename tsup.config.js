@@ -8,6 +8,6 @@ export default defineConfig({
   dts: true,
   treeshake: true,
   minify: false,
-  watch: true,
+  watch: false,
   format: ['esm']
 })
