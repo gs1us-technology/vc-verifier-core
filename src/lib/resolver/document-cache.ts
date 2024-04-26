@@ -24,7 +24,8 @@ const loadLocalCache = async () => {
 }
 
 // Load Local Cache using document configuration
-await loadLocalCache();
+// Developer Note: Top Level Async is not supported in Angular 16/17
+loadLocalCache();
 
 // Function to get document from local cache
 export function getDocumentFromContextCache(url: string) {

@@ -14,6 +14,7 @@ import { gs1ProductContext } from './gs1/json-ld/gs1_product_context.js';
 
 // Traceability Specific Context Documents
 import { traceability_v1 } from './traceability/traceability-v1.js'
+import { gs1CbpDid } from './gs1/did/didCBP.js';
 
 // Document Context Configuration for Local Cache
 // Developer Notes: 
@@ -71,5 +72,13 @@ export const documentContextConfig = {
     {
         url: "https://ref.gs1.org/gs1/vc/trade-item-context",
         document: gs1TradeItemContext
+    },
+    {
+        url: "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
+        document: gs1CbpDid
+    },
+    {
+        url: "did:web:cbpvsvip-vc.gs1us.org",
+        document: gs1CbpDid
     }]
 }
