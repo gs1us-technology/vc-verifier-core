@@ -14,7 +14,9 @@ import { gs1ProductContext } from './gs1/json-ld/gs1_product_context.js';
 
 // Traceability Specific Context Documents
 import { traceability_v1 } from './traceability/traceability-v1.js'
-import { gs1CbpDid } from './gs1/did/didCBP.js';
+import { jwkV1 } from './common/jwk-v1.js';
+
+import { getDocumentFromCache } from "../lib/cache/local-cache.js";
 
 // Document Context Configuration for Local Cache
 // Developer Notes: 
@@ -50,6 +52,14 @@ export const documentContextConfig = {
         document: ed25519_signature_2018_v1
     },
     {
+        url: "https://w3c.github.io/vc-data-integrity/contexts/jwk/v1.jsonld",
+        document: jwkV1
+    },
+    {
+        url: "https://w3id.org/security/jwk/v1",
+        document: jwkV1
+    },
+    {
         url: "https://w3id.org/traceability/v1",
         document: traceability_v1
     },
@@ -75,10 +85,10 @@ export const documentContextConfig = {
     },
     {
         url: "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
-        document: gs1CbpDid
+        document: getDocumentFromCache("gs1-cbpvsvip-did")
     },
     {
         url: "did:web:cbpvsvip-vc.gs1us.org",
-        document: gs1CbpDid
+        document: getDocumentFromCache("gs1-cbpvsvip-did")
     }]
 }

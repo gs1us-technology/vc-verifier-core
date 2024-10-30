@@ -1,9 +1,8 @@
-// @ts-ignore
 import { VerifiableCredential, errorMessage, gs1CredentialValidationRule} from '@gs1us/vc-verifier-rules';
 
 // @context: is a complex object that can be an array that contains strings or objects
 export type resultProof = {
-    '@context': (string | any)[];
+    '@context': (string | unknown)[];
     type: string;
     created: string;
     verificationMethod: string;
@@ -17,7 +16,7 @@ export type proofResult = {
 
 // @context: is a complex object that can be an array that contains strings or objects
 export type verificationMethod = {
-    '@context': (string | any)[];
+    '@context': (string | unknown)[];
     id: string;
     type: string;
     controller: string;
@@ -26,7 +25,7 @@ export type verificationMethod = {
 
 // @context: is a complex object that can be an array that contains strings or objects
 export type resultResponse = {
-    '@context': (string | any)[];
+    '@context': (string | unknown)[];
     type: string[];
     verifiableCredential: VerifiableCredential[];
 }
@@ -46,6 +45,7 @@ export type statusResult = {
 export type statusVerifiedResponse = {
     verified: boolean;
     Revocation: statusResult;
+    schemaValidation?: statusResult;
     gs1CredentialCheck?: statusResult;
 }
 
@@ -73,5 +73,6 @@ export type presentationResultsResponse = {
 export type credentialVerifierTypeResult = {
     Proof: boolean;
     Revocation: boolean | unknown;
+    JsonSchema: boolean | unknown;
     gs1CredentialValidation: boolean | unknown;
 }

@@ -1,8 +1,11 @@
 // Standard Node Module - Used for testing
-import { createVerificationResult } from "../lib/mappers/verification-mapper.js";
-
-// @ts-ignore
+import { createVerificationResult } from "../lib/data-integrity/mappers/verification-mapper.js";
 import { gs1RulesResultContainer, verificationResult } from '@gs1us/vc-verifier-rules';
+
+export type testVerificationResult = {
+  verified: boolean;
+  result: verificationResult;
+}
 
 const vcResultPass_ToMap = {
     "verified": true,
@@ -259,22 +262,24 @@ const vcResultFail_ToMap = {
     ]
   };
 
-export async function testMappingCredential_null(): Promise<verificationResult> {
+
+
+export async function testMappingCredential_null(): Promise<testVerificationResult> {
     const resultVC = await createVerificationResult(null);
     return { verified: !resultVC.verified,  result: resultVC };
 }
 
-export async function testMappingCredential_undefined(): Promise<verificationResult> {
+export async function testMappingCredential_undefined(): Promise<testVerificationResult> {
     const resultVC = await createVerificationResult(undefined);
     return { verified: !resultVC.verified,  result: resultVC };
 }
 
-export async function testMappingCredential_Verified(): Promise<verificationResult> {
+export async function testMappingCredential_Verified(): Promise<testVerificationResult> {
     const resultVC = await createVerificationResult({verified: true});
     return { verified: resultVC.verified,  result: resultVC };
 }
 
-export async function testMappingCredential_notVerified(): Promise<verificationResult> {
+export async function testMappingCredential_notVerified(): Promise<testVerificationResult> {
     const resultVC = await createVerificationResult({verified: false});
     return { verified: !resultVC.verified,  result: resultVC };
 }
@@ -283,17 +288,16 @@ export async function testMappingCredential_passResult(): Promise<verificationRe
   const gs1CredentialCheckResult: gs1RulesResultContainer =  { verified: false, result: [] };
   const resultVC = await createVerificationResult(vcResultPass_ToMap, gs1CredentialCheckResult);
 
-  return { verified: resultVC.verified,  result: resultVC };
+  return resultVC;
 }
-export async function testMappingCredential_failResult(): Promise<verificationResult> {
+export async function testMappingCredential_failResult(): Promise<testVerificationResult> {
   const gs1CredentialCheckResult: gs1RulesResultContainer =  { verified: false, result: [] };
   gs1CredentialCheckResult.result.push({ credentialId: "Test_CredentialId",
       credentialName: "Test_CredentialName", 
       verified: false, 
-      errors: [{ code: "123", rule: "Test Rule", isValid: false}] });
+      errors: [{ code: "123", rule: "Test Rule", }] });
 
   const resultVC = await createVerificationResult(vcResultFail_ToMap, gs1CredentialCheckResult);
   return { verified: !resultVC.verified,  result: resultVC };
-
 }
 

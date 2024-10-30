@@ -1,0 +1,188 @@
+{
+    "$id": "https://transmute-industries.github.io/verifiable-credential-profile-template/schemas/ExampleAlumniCredential.yaml",
+    "title": "Example Alumni Credential",
+    "description": "Example Alumni Credential based on vc-data-model-2.0 [EXAMPLE 2](https://www.w3.org/TR/vc-data-model-2.0/#example-usage-of-the-context-property).",
+    "type": "object",
+    "properties": {
+      "@context": {
+        "type": "array",
+        "readOnly": true,
+        "const": [
+          "https://www.w3.org/ns/credentials/v2",
+          "https://transmute-industries.github.io/verifiable-credential-profile-template/contexts/credentials/v1"
+        ],
+        "default": [
+          "https://www.w3.org/ns/credentials/v2",
+          "https://transmute-industries.github.io/verifiable-credential-profile-template/contexts/credentials/v1"
+        ],
+        "items": {
+          "type": "string",
+          "enum": [
+            "https://www.w3.org/ns/credentials/v2",
+            "https://transmute-industries.github.io/verifiable-credential-profile-template/contexts/credentials/v1"
+          ]
+        }
+      },
+      "type": {
+        "type": "array",
+        "readOnly": true,
+        "const": [
+          "VerifiableCredential",
+          "ExampleAlumniCredential"
+        ],
+        "default": [
+          "VerifiableCredential",
+          "ExampleAlumniCredential"
+        ],
+        "items": {
+          "type": "string",
+          "enum": [
+            "VerifiableCredential",
+            "ExampleAlumniCredential"
+          ]
+        }
+      },
+      "id": {
+        "type": "string",
+        "format": "uri"
+      },
+      "credentialSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Credential Schema Identifier",
+            "type": "string",
+            "format": "uri",
+            "const": "https://transmute-industries.github.io/verifiable-credential-profile-template/schemas/ExampleAlumniCredential.yaml"
+          },
+          "type": {
+            "title": "Credential Schema Type",
+            "const": "JsonSchema"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type"
+        ]
+      },
+       "validFrom": {
+        "description": "Date from which the credential is to be considered valid.",
+        "type": "string",
+        "format": "date-time"
+      },
+      "issuer": {
+        "title": "Issuer",
+        "description": "The issuer of the credential",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Issuer Identifier",
+            "type": "string",
+            "format": "uri"
+          },
+          "name": {
+            "title": "Issuer Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "credentialSubject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Subject Identifier",
+            "type": "string",
+            "format": "uri"
+          },
+          "alumniOf": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "title": "University Identifier",
+                "type": "string",
+                "format": "uri"
+              },
+              "name": {
+                "title": "University Name",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "alumniOf"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "@context",
+      "id",
+      "type",
+      "issuer",
+      "validFrom",
+      "credentialSchema",
+      "credentialSubject"
+    ],
+    "additionalProperties": false,
+    "example": {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://transmute-industries.github.io/verifiable-credential-profile-template/contexts/credentials/v1"
+      ],
+      "id": "https://transmute-industries.github.io/verifiable-credential-profile-template/credentials/58473",
+      "type": [
+        "VerifiableCredential",
+        "ExampleAlumniCredential"
+      ],
+      "issuer": "did:web:transmute-industries.github.io:verifiable-credential-profile-template:issuers:example",
+      "validFrom": "2010-01-01T00:00:00Z",
+      "credentialStatus": [
+        {
+          "id": "https://transmute-industries.github.io/verifiable-credential-profile-template/credentials/status/8#492847",
+          "type": "BitstringStatusListEntry",
+          "statusPurpose": "message",
+          "statusListIndex": "492847",
+          "statusSize": 2,
+          "statusListCredential": "https://transmute-industries.github.io/verifiable-credential-profile-template/credentials/status/8",
+          "statusMessage": [
+            {
+              "status": "0x0",
+              "message": "valid"
+            },
+            {
+              "status": "0x1",
+              "message": "revoked"
+            },
+            {
+              "status": "0x2",
+              "message": "suspended"
+            }
+          ],
+          "statusReference": "https://transmute-industries.github.io/verifiable-credential-profile-template/credentials/status/messages/"
+        }
+      ],
+      "credentialSchema": {
+        "id": "https://transmute-industries.github.io/verifiable-credential-profile-template/schemas/ExampleAlumniCredential.yaml",
+        "type": "JsonSchema"
+      },
+      "credentialSubject": {
+        "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+        "alumniOf": {
+          "id": "did:web:transmute-industries.github.io:verifiable-credential-profile-template:issuers:example",
+          "name": "Example University"
+        }
+      }
+    }
+  }

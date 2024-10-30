@@ -1,0 +1,56 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1",
+    "https://w3id.org/security/suites/x25519-2020/v1",
+    "https://w3id.org/security/suites/ed25519-2018/v1",
+    "https://w3id.org/security/jwk/v1",
+    "https://www.w3.org/ns/credentials/v2"
+  ],
+  "id": "did:web:healthytots.net",
+  "verificationMethod": [
+    {
+      "id": "did:web:healthytots.net#z6MkivkVCosEsJM3VQq2JcqbM8a9EzKpdY6jgRx6jWUdkGYx",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:web:healthytots.net",
+      "publicKeyMultibase": "z5UVScZcoXkraNuzKd3skW329RR3yDerNzR3AuEWcq3ma"
+    },
+    {
+      "id": "did:web:healthytots.net#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas",
+      "type": "JsonWebKey", 
+      "controller": "did:web:healthytots.net",
+      "publicKeyJwk": {
+        "kid": "Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas",
+        "alg": "ES256",
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "hBF7Hxah_pA0FXenFvNv88KCy8CUZ4dliM55Y-GM-Bw",
+        "y": "tPtg-vqFDABNv7G_XZqeYZkfY9gJE-30PONnS8FAIVs"
+      }
+    }
+  ],
+  "authentication": [
+    "did:web:healthytots.net#z6MkivkVCosEsJM3VQq2JcqbM8a9EzKpdY6jgRx6jWUdkGYx",
+    "did:web:healthytots.net#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
+  ],
+  "assertionMethod": [
+    "did:web:healthytots.net#z6MkivkVCosEsJM3VQq2JcqbM8a9EzKpdY6jgRx6jWUdkGYx",
+    "did:web:healthytots.net#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
+  ],
+  "capabilityDelegation": [
+    "did:web:healthytots.net#z6MkivkVCosEsJM3VQq2JcqbM8a9EzKpdY6jgRx6jWUdkGYx",
+    "did:web:healthytots.net#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
+  ],
+  "capabilityInvocation": [
+    "did:web:healthytots.net#z6MkivkVCosEsJM3VQq2JcqbM8a9EzKpdY6jgRx6jWUdkGYx",
+    "did:web:healthytots.net#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
+  ],
+  "keyAgreement": [
+    {
+      "id": "did:web:healthytots.net#z6LShFn6P7AJfkG1RqHmw2YeFhDDDf2skNqwFRXsPfVFSXLG",
+      "type": "X25519KeyAgreementKey2020",
+      "controller": "did:web:healthytots.net",
+      "publicKeyMultibase": "z6abvroMSaHYGLSv1QP2gw6zjNWVm3mfnNSpBuCqij9ZW"
+    }
+  ]
+}
