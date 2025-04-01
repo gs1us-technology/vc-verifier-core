@@ -1,14 +1,14 @@
 # Overview 
 The GS1 US Decentralized Identifier & Verifiable Credentials solution has been created to provide guidance on how to verify Verifiable Credentials (VC) issued for the GS1 Verifiable Credentials Digital License ecosystem. The library is **FOR DEMONSTRATION PURPOSES ONLY: NOT TO BE USED FOR PRODUCTION GRADE SYSTEMS!**
 
-The GS1 License ecosystem ensures globally unique identification of products, asserts, locations, and entities for global trade. The GS1 Digital license ecosystem expresses existing licenses as W3C verifiable credentials. By assembling a chain of these credentials, product, location, and asset assertions can be digitally verified as authentic. This library supports the validation of these credentials chains.
+The GS1 License ecosystem ensures globally unique identification of products, asserts, locations, and entities for global trade.  The GS1 Digital license ecosystem expresses existing licenses as W3C verifiable credentials.   By assembling a chain of these credentials, product, location, and asset assertions can be digitally verified as authentic.  This library supports the validation of these credentials chains.
 
-Currently this solution is built for the [WC3 Verifiable Credentials Data Model 1.1](https://www.w3.org/TR/vc-data-model) and the GS1 level four validation rules defined in the [GS1 Data Model](https://ref.gs1.org/gs1/vc/data-model/) to validate the root of trust with GS1 issued credentials.
+This solutions support the [WC3 Verifiable Credentials Data Model 2.0](https://www.w3.org/TR/vc-data-model-2.0) and [WC3 Verifiable Credentials Data Model 1.1](https://www.w3.org/TR/vc-data-model) and the GS1 level four validation rules defined in the [GS1 Data Model](https://ref.gs1.org/gs1/vc/data-model/) to validate the root of trust with GS1 issued credentials.
 
 The GS1 US Verifiable Credentials Verification solution is divided into two libraries. 
 
 - [vc-verifier-core](https://github.com/gs1us-technology/vc-verifier-core): This is the core library for verifying GS1 US Based Verifiable Credentials. This library is the main library to use for verifying VCs. The library will perform proof and revocation checks on all presented VCs. 
-- [vc-verifier-rules](https://github.com/gs1us-technology/vc-verifier-rules): This is the rules library for verifying GS1 US Based Verifiable Credentials. This library will validate GS1 based VCs and ensure they follow the level four business rules defined by the GS1 Data Model Document. 
+- [vc-verifier-rules](https://github.com/gs1us-technology/vc-verifier-rules): This is the rules library for verifying GS1 US Based Verifiable Credentials. This library will validate GS1 based VCs and ensure they follow the level four business rules defined by the GS1 Data Model Document.
 
 **Notes**: To run the libraries locally you will need to clone both repos into a parent Folder (e.g. gs1-us). The vc-verifier-core library has a dependency on the vc-verifier-rules and requires running a local NPM Install. 
 
@@ -38,7 +38,8 @@ Here is the DID Document for the GS1 US DID. The key components of the DID Docum
     "https://www.w3.org/ns/did/v1",
     "https://w3id.org/security/suites/ed25519-2020/v1",
     "https://w3id.org/security/suites/x25519-2020/v1",
-    "https://w3id.org/security/suites/ed25519-2018/v1"
+    "https://w3id.org/security/suites/ed25519-2018/v1",
+    "https://w3id.org/security/jwk/v1"
   ],
   "id": "did:web:cbpvsvip-vc.gs1us.org",
   "verificationMethod": [
@@ -53,23 +54,40 @@ Here is the DID Document for the GS1 US DID. The key components of the DID Docum
       "type": "Ed25519VerificationKey2018",
       "controller": "did:web:cbpvsvip-vc.gs1us.org",
       "publicKeyBase58": "5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc"
+    },
+    {
+      "id": "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas",
+      "type": "JsonWebKey", 
+      "controller": "did:web:cbpvsvip-vc.gs1us.org",
+      "publicKeyJwk": {
+        "kid": "Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas",
+        "alg": "ES256",
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "hBF7Hxah_pA0FXenFvNv88KCy8CUZ4dliM55Y-GM-Bw",
+        "y": "tPtg-vqFDABNv7G_XZqeYZkfY9gJE-30PONnS8FAIVs"
+      }
     }
   ],
   "authentication": [
     "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
-    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc"
+    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc",
+    "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
   ],
   "assertionMethod": [
     "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
-    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc"
+    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc",
+    "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
   ],
   "capabilityDelegation": [
     "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
-    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc"
+    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc",
+    "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
   ],
   "capabilityInvocation": [
     "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
-    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc"
+    "did:web:cbpvsvip-vc.gs1us.org#5yYxa2LAQCkNA8BDEkhtgDEoPNeJhHUmsQBvzATvRZrc",
+    "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas"
   ],
   "keyAgreement": [
     {
@@ -106,8 +124,7 @@ Here is the DID Document for the GS1 US DID. The key components of the DID Docum
 }
 ```
 
-When a Verifiable Credential is issued the Public and Private key for the DID Document is used to generate a crypographic proof that is included in the signed Verifiable Credential. This proof is used during verification to identify 
-the verificationMethod and associated public key to use to validate the Verifiable Credential.
+When a Verifiable Credential is issued the Public and Private key for the DID Document is used to generate a crypographic proof that is included in the signed Verifiable Credential. This proof is used during verification to identify the verificationMethod and associated public key to use to validate the Verifiable Credential.
 
 The other main component from the DID Document is the services section. This section defines the different types of services supported by the DID. For the GS1 US DID, we support the Traceability API End Point. 
 
@@ -115,7 +132,7 @@ The other main component from the DID Document is the services section. This sec
 
 ## What is a Credential 
 
-A credential is a set of one or more claims made by an issuer. A verifiable credential is a tamper-evident credential that has authorship that can be cryptographically verified. Verifiable credentials can be used to build verifiable presentations, which can also be cryptographically verified.
+A credential is a set of one or more claims made by the same entity. Credentials might also include an identifier and metadata to describe properties of the credential, such as the issuer, the validity date and time period, a representative image, verification material, status information, and so on. A verifiable credential is a set of tamper-evident claims and metadata that cryptographically prove who issued it. Examples of verifiable credentials include, but are not limited to, digital employee identification cards, digital driver's licenses, and digital educational certificates.
 
 ![Screenshot](./content/vc.png)
 
@@ -127,68 +144,83 @@ A credential is a set of one or more claims made by an issuer. A verifiable cred
 - Proofs
   - This is the cryptographic signature of the issuer
   - The verifier will used this information to verify the issuer signature and ensure the VC has not be altered.
-  
-## Example Verifiable Credential
+
+The [Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) supports two classes of securing mechanisms: 
+
+- An *enveloping proof* wraps a serialization of this data model. This library supports the JOSE (JWT) serialization method from the [Securing Verifiable Credentials using JOSE and COSE](https://www.w3.org/TR/vc-jose-cose/).
+
+- An *embedded proof* is a mechanism where the proof is included in the serialization of the data model. This library supports the older [WC3 Verifiable Credentials Data Model 1.1 Linked Data Signature proof](https://www.w3.org/TR/vc-data-model/).
+
+## Example Decoded JOSE Verifiable Credential
 ``` JSON
+
+ // JOSE Header
+ {
+  "kid": "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas",
+  "alg": "ES256"
+}
+
+// JOSE Payload
 {
   "@context": [
-    "https://www.w3.org/2018/credentials/v1",
-    "https://ref.gs1.org/gs1/vc/license-context",
-    "https://w3id.org/security/suites/ed25519-2020/v1",
-    {
-      "name": "https://schema.org/name",
-      "description": "https://schema.org/description",
-      "image": "https://schema.org/image"
-    },
-    "https://w3id.org/vc-revocation-list-2020/v1"
+    "https://www.w3.org/ns/credentials/v2",
+    "https://ref.gs1.org/gs1/vc/license-context"
   ],
-  "issuer": "did:web:cbpvsvip-vc.gs1us.org",
-  "name": "GS1 Company Prefix License",
-  "issuanceDate": "2021-05-11T10:50:36.701Z",
-  "id": "http://did-vc.gs1us.org/vc/license/08600057694",
+  "id": "https://cbpvsvip-vc-api.gs1us.org/credentials/081015955",
   "type": [
     "VerifiableCredential",
     "GS1CompanyPrefixLicenseCredential"
   ],
+  "issuer": {
+    "id": "did:web:cbpvsvip-vc.gs1us.org",
+    "name": "GS1 US"
+  },
+  "name": "GS1 Company Prefix License",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 identification keys.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialSubject": {
-    "id": "did:key:z6Mkfb3kW3kBP4UGqaBEQoCLBUJjdzuuuPsmdJ2LcPMvUreS/1",
+    "id": "did:web:healthytots.net",
     "organization": {
-      "gs1:partyGLN": "0860005769407",
+      "gs1:partyGLN": "0810159550000",
       "gs1:organizationName": "Healthy Tots"
     },
     "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/08",
-    "licenseValue": "08600057694",
-    "alternativeLicenseValue": "8600057694"
+    "licenseValue": "081015955",
+    "alternativeLicenseValue": "81015955"
+  },
+  "credentialSchema": {
+    "id": "https://id.gs1.org/vc/schema/v1/companyprefix",
+    "type": "JsonSchema"
   },
   "credentialStatus": {
-    "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1193",
-    "type": "RevocationList2020Status",
-    "revocationListIndex": 1193,
-    "revocationListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
-  },
-  "proof": {
-    "type": "Ed25519Signature2020",
-    "created": "2023-05-22T16:55:59Z",
-    "verificationMethod": "did:web:cbpvsvip-vc.gs1us.org#z6Mkig1nTEAxna86Pjb71SZdbX3jEdKRqG1krDdKDatiHVxt",
-    "proofPurpose": "assertionMethod",
-    "proofValue": "zfWTiZ9CRLJBUUHRFa82adMZFwiAvYCsTwRjX7JaTpUnVuCTj44f9ErSGbTBWezv89MyKQ3jTLFgWUbUvB6nuJCN"
+    "id": "https://cbpvsvip-vc-api.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14#10010",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "10010",
+    "statusListCredential": "https://cbpvsvip-vc-api.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/"
   }
 }
 ```
 
 # Library Runtime
+The library is a JavaScript ES Module (EMS) based NPM package that uses 3rd party libraries or the verification of WC3 Verifiable Credentials. The library is meant to be an example verification library to guide interested parties how to verify GS1 credentials. 
 
-The library is a JavaScript ES Module (EMS) based NPM package that uses the WC3 standards VC libraries provided by Digital Bazaar. To consume the library directly you can **Import** any of the Functions or Types exported by the libraries src/index.ts file. 
+- Uses [Transmute JOSE-COSE Library](https://github.com/transmute-industries/verifiable-credentials) to verify VC Data Model 2.0 JOSE (JWT) verifiable credentials.
+- Uses [Digital Bazaar vc.js Library](https://github.com/digitalbazaar/vc) to verify VC Data Model 1.1 Data Integrity Proof verifiable credentials.
 
 The library requires the following environment:
-- Node - v18.16.1+
-- NPM - 9.5.1+
+- Node - v18.20.4+
+- NPM - v10.7.0+
 
 # Repo Folders
-- `public`: Sample and Test Credentials used by the library. 
+- `public\data-integrity`: Older Data Integrity Sample and Test Credentials used by the library. 
+- `public\jose`: JOSE Encoded Sample and Test Credentials used by the library. 
+- `public\schema`: Custom Json Schema Validation rules for GS1 Verifiable Credentials
 - `src\contexts`: JSON-LD and DID Documents required by the library including the standard WC3 JSON-LD files, the GS1 Data Model JSON-LD files, and other dependent 
 - `src\lib`: The main code for the GS1 US vc-verifier-core JavaScript library.
- - `src\tests\index-test.ts`: Test Suite for testing the library
+- `src\tests\index-test.ts`: Test Suite Harness for demonstrating how to verify verifiable credentials
+- `src\tests\data-integrity\data-integrity-test`: Test Suite for Older Data Integrity proof verifiable credentials
+- `src\tests\jose\jose-test.ts`: Test Suite for JOSE verifiable credentials
 
 # Running the Library Locally 
 To use the GS1 US Decentralized Identifier & Verifiable Credentials solution you will need to clone both the [vc-verifier-core](https://github.com/gs1us-technology/vc-verifier-core) and [vc-verifier-rules](https://github.com/gs1us-technology/vc-verifier-rules) libraries. 
@@ -217,7 +249,7 @@ node .
 # Testing the Library
 The `vc-verifier-core` library includes a number of integration tests to validate different verifiable credentials scenarios. These include tests focus on proof verification, revocation status checking, and GS1 based credential validation. 
 
-The following are two verification scenarios include with the library. To see all the test scenarios review the `src\tests\index-test.ts` file.
+The following are two verification scenarios include with the library. To see all the test scenarios review the test files under the `src\tests\` folder.
 
 ## Organization Verifiable Credential
 Validate the GS1 credential chain starting with a GS1 Organization, it's associated Key credential and Company Prefix credential. During this validation a GS1 License Prefix credential issued by GS1 Global will be resolved. This is done to validate the complete root of trust for GS1 issued credentials.
@@ -228,66 +260,89 @@ node . -test organization
 
 Output From Tests: 
 
-The presentation submitted has passed all three types of verification. Inside of the `credentialResults` array there will be an item for each verifiable credential included within the presentation. 
+The presentation submitted has passed all four types of verification. Inside of the `credentialResults` array there will be an item for each verifiable credential included within the presentation. 
 
 ``` 
 {
-  "verified": true,
-  "result": {
     "verified": true,
-    "verifications": [
-      {
-        "title": "Proof",
-        "status": "good"
-      },
-      {
-        "title": "Revocation",
-        "status": "good"
-      },
-      {
-        "title": "GS1CredentialValidation",
-        "status": "good"
-      }
-    ],
-    "credentialResults": [
-      {
+    "result": {
         "verified": true,
-        "credentialId": "http://did-vc.gs1us.org/vc/license/08600057694",
-        "credentialName": "GS1CompanyPrefixLicenseCredential",
-        "credentialValidationRules": [
-          {
-            "code": "VS-100",
-            "rule": "Verification Status",
-            "isValid": true
-          }
+        "verifications": [
+            {
+                "title": "Proof",
+                "status": "good"
+            },
+            {
+                "title": "Revocation",
+                "status": "good"
+            },
+            {
+                "title": "JsonSchema",
+                "status": "good"
+            },
+            {
+                "title": "GS1CredentialValidation",
+                "status": "good"
+            }
+        ],
+        "credentialResults": [
+            {
+                "verified": true,
+                "credentialId": "https://cbpvsvip-vc-api.gs1us.org/credentials/081015955",
+                "credentialName": "GS1CompanyPrefixLicenseCredential",
+                "credentialValidationRules": [
+                    {
+                        "code": "VS-100",
+                        "rule": "Verifiable Credential Status Check is Successful."
+                    },
+                    {
+                        "code": "VS-500",
+                        "rule": "Verifiable Credential Schema Check is Successful."
+                    }
+                ],
+                "error": []
+            },
+            {
+                "verified": true,
+                "credentialId": "did:key:z6MkrSXAsv2UTtNp3eZv8ypKNupbpYEqmBxpqDF994EhxQAk",
+                "credentialName": "KeyCredential",
+                "credentialValidationRules": [
+                    {
+                        "code": "VS-100",
+                        "rule": "Verifiable Credential Status Check is Successful."
+                    },
+                    {
+                        "code": "VS-500",
+                        "rule": "Verifiable Credential Schema Check is Successful."
+                    }
+                ],
+                "error": []
+            },
+            {
+                "verified": true,
+                "credentialId": "did:key:z6Mkp5zGya5YjRVdAk4iu9vGb29Cy67gZ6YwCxMH8scsLRbq",
+                "credentialName": "OrganizationDataCredential",
+                "credentialValidationRules": [
+                    {
+                        "code": "VS-100",
+                        "rule": "Verifiable Credential Status Check is Successful."
+                    },
+                    {
+                        "code": "VS-500",
+                        "rule": "Verifiable Credential Schema Check is Successful."
+                    }
+                ],
+                "error": []
+            },
+            {
+                "verified": true,
+                "credentialId": "https://id.gs1.org/vc/license/gs1_prefix/08",
+                "credentialName": "GS1PrefixLicenseCredential",
+                "credentialValidationRules": [],
+                "error": []
+            }
         ]
-      },
-      {
-        "verified": true,
-        "credentialId": "did:key:z6MkrSXAsv2UTtNp3eZv8ypKNupbpYEqmBxpqDF994EhxQAk",
-        "credentialName": "KeyCredential",
-        "credentialValidationRules": [
-          {
-            "code": "VS-100",
-            "rule": "Verification Status",
-            "isValid": true
-          }
-        ]
-      },
-      {
-        "verified": true,
-        "credentialId": "did:key:z6Mkp5zGya5YjRVdAk4iu9vGb29Cy67gZ6YwCxMH8scsLRbq",
-        "credentialName": "OrganizationDataCredential",
-        "credentialValidationRules": [
-          {
-            "code": "VS-100",
-            "rule": "Verification Status",
-            "isValid": true
-          }
-        ]
-      }
-    ]
-  }
+    }
 }
 ``` 
 
@@ -306,66 +361,93 @@ The presentation submitted includes a verifiable Credential that fails one of th
 
 ``` 
 {
-  "verified": false,
-  "result": {
     "verified": false,
-    "verifications": [
-      {
-        "title": "Proof",
-        "status": "good"
-      },
-      {
-        "title": "Revocation",
-        "status": "good"
-      },
-      {
-        "title": "GS1CredentialValidation",
-        "status": "bad"
-      }
-    ],
-    "credentialResults": [
-      {
-        "verified": true,
-        "credentialId": "http://did-vc.gs1us.org/vc/license/08600057694",
-        "credentialName": "GS1CompanyPrefixLicenseCredential",
-        "credentialValidationRules": [
-          {
-            "code": "VS-100",
-            "rule": "Verification Status",
-            "isValid": true
-          }
-        ]
-      },
-      {
-        "verified": true,
-        "credentialId": "did:key:z6MknHepGrjA2LnaxMw3yDp9SRYryLRKQ7GUMpFusYfwSdyW",
-        "credentialName": "KeyCredential",
-        "credentialValidationRules": [
-          {
-            "code": "VS-100",
-            "rule": "Verification Status",
-            "isValid": true
-          }
-        ]
-      },
-      {
+    "result": {
         "verified": false,
-        "credentialId": "did:key:z6MkumEzsmdv1ywQ5vHZ4LjgLZvR8jpofr46gipxUqxokvrT",
-        "credentialName": "ProductDataCredential",
-        "credentialValidationRules": [
-          {
-            "code": "VS-100",
-            "rule": "Verification Status",
-            "isValid": true
-          },
-          {
-            "code": "GS1-320",
-            "rule": "The data credential GS1 Digital Link does not match the Id in the Key Credential."
-          }
+        "verifications": [
+            {
+                "title": "Proof",
+                "status": "good"
+            },
+            {
+                "title": "Revocation",
+                "status": "good"
+            },
+            {
+                "title": "JsonSchema",
+                "status": "good"
+            },
+            {
+                "title": "GS1CredentialValidation",
+                "status": "bad"
+            }
+        ],
+        "credentialResults": [
+            {
+                "verified": true,
+                "credentialId": "https://cbpvsvip-vc-api.gs1us.org/credentials/08600057694",
+                "credentialName": "GS1CompanyPrefixLicenseCredential",
+                "credentialValidationRules": [
+                    {
+                        "code": "VS-100",
+                        "rule": "Verifiable Credential Status Check is Successful."
+                    },
+                    {
+                        "code": "VS-500",
+                        "rule": "Verifiable Credential Schema Check is Successful."
+                    }
+                ],
+                "error": []
+            },
+            {
+                "verified": false,
+                "credentialId": "did:key:z6MkjJLbS3eAmBG6AX7AuPgjVeDNdgz34fC7pF5RghwYNutE",
+                "credentialName": "KeyCredential",
+                "credentialValidationRules": [
+                    {
+                        "code": "VS-100",
+                        "rule": "Verifiable Credential Status Check is Successful."
+                    },
+                    {
+                        "code": "VS-500",
+                        "rule": "Verifiable Credential Schema Check is Successful."
+                    },
+                    {
+                        "code": "GS1-150",
+                        "rule": "The issuer of this license credential does not match the expected value."
+                    }
+                ],
+                "error": []
+            },
+            {
+                "verified": false,
+                "credentialId": "https://cbpvsvip-vc-api.gs1us.org/credentials/00860005769414",
+                "credentialName": "ProductDataCredential",
+                "credentialValidationRules": [
+                    {
+                        "code": "VS-100",
+                        "rule": "Verifiable Credential Status Check is Successful."
+                    },
+                    {
+                        "code": "VS-500",
+                        "rule": "Verifiable Credential Schema Check is Successful."
+                    },
+                    {
+                        "code": "GS1-150",
+                        "rule": "The issuer of this license credential does not match the expected value."
+                    }
+                ],
+                "error": []
+            },
+            {
+                "verified": true,
+                "credentialId": "https://id.gs1.org/vc/license/gs1_prefix/08",
+                "credentialName": "GS1PrefixLicenseCredential",
+                "credentialValidationRules": [],
+                "error": []
+            }
         ]
-      }
-    ]
-  }
+    }
 }
 ``` 
 ## Test Command Line Options
@@ -375,85 +457,16 @@ Test Suite Command Line Options
 - `node .`  Will run all the standard tests
 - `node . -all`  Will run all tests 
 - `node . -test TEST_NAME`  Will run an individual test
-- `node . -gs1`  Will run all the GS1 Credential Tests that pass validation
-- `node . -gs1 -error`  Will run all the GS1 Credential Tests that fail validation
+- `node . -jose`  Will run all  GS1 Credential Tests for JOSE Verifiable Credential
 
 # Using the Library
-To use the GS1 US Decentralized Identifier & Verifiable Credentials core and rules library in your own solution, you will need to do a local install of both libaries. 
+This library is meant to be an example verification library to guide interested parties how to verify GS1 credentials. We recommend directly using the 3rd party libraries from Transmute or Digital Bazaar in your own solution.
 
-![Screenshot](./content/library_overview.png)
-
-After setting up your application run the following install comamnds. This will install the libraries and its dependencies into your local node_modules folder. 
-``` JavaScript
-npm install ../vc-verifier-rules
-npm install ../vc-verifier-core
-```
-## Referencing the Library 
-Add the following to reference the library in your local code. Take note you may have to add **// @ts-ignore** above the from. This is override for when the libraries TypeScript Types can not be imported correctly.
-
-``` typescript
-// @ts-ignore
-import { verificationResult } from '@gs1us/vc-verifier-rules';
-
-// @ts-ignore
-import { VerifiableCredential, VerifiablePresentation, verificationResult } from '@gs1us/vc-verifier-rules'
-``` 
-## Library API
-The library includes two methods for verifying credentials.
-- `verifyPresentation` Is the main method and should be used when you have a signed presentation that contains the required GS1 credentials.
-- `verifyCredential` Is an additional method that can be called when you only have a single verifiable credentials. Internally this method will generate an unsigned presentation before validating the credential.
-
-## Code Example
-Included below is an example of calling the `verifyPresentation` method in the library. This will verify all the verifiable credentials included in the presentation. After the proof and revocation checks are performed on the verifiable credentials any GS1 credential's included will be verified using the vc-verifier-rules library.
-
-``` typescript
-// See the index-test.ts file in the vc-verifier-core code base for how to load a verifiable credential/presentation from a local JSON File 
-// Or provide your own verifiable credential/presentation to the verifyPresentation method. 
-const testPresentation = getTestPresentation("company-prefix-product-data-00860005769421");
-const vcResult: verificationResult = await verifyPresentation(testPresentation);
-
-if (vcResult.verified === true) {
-   console.log("Success");
-} else {
-  console.log(JSON.stringify(vcResult, null, 4));
-```
-
-## Library Output 
-The following types are the main output from the @gs1us/vc-verifier-core library. Both the `verifyPresentation` and  `verifyCredential` will return a result object called `verificationResult` that contains the status of the verifiable credential: Proof, Revocation and where applicable GS1 Credential validation status. 
-
-Check the `verified` property of the return result. If true all the verifiable credentials passed to the library pass all levels of validation. If false one or more of the verifiable credentials could not be validated. When that happens check the `credentialValidationRules` property for any validation errors encountered during verification. 
-
-``` typescript
-// *****  Validation Rule Checks *****
-export type verificationCheck = {
-    status: "good" | "bad";
-    title: "Proof" | "Activation" | "Expired" | "Revocation" | "GS1CredentialValidation";
-}
-
-// Code and Rule Associated with GS1 Validation Rules - See lib/engine/gs1-credential-errors.ts for list of codes
-export type gs1CredentialValidationRule = {
-    code: string;
-    rule: string;
-}
-
-// *****  Verification Library Result Objects *****
-export type credentialResults = {
-    verified: boolean, 
-    credentialId: string,
-    credentialValidationRules?: gs1CredentialValidationRule[];
-}
-
-export type verificationResult = {
-    verified: boolean;
-    verifications?: verificationCheck[];
-    credentialResults?: credentialResults[];
-}
-```
 # Contribute
 This library is currently not supporting external PRs. If you run into an issue or have a suggest please post in the repo's issue board. 
 
 # License
-Copyright 2023 GS1 US
+Copyright 2024 GS1 US
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

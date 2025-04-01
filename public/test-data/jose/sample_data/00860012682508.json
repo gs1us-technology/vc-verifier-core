@@ -1,0 +1,52 @@
+{
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://ref.gs1.org/gs1/vc/declaration-context",
+      "https://ref.gs1.org/gs1/vc/product-context"
+    ],
+    "type": [
+      "VerifiableCredential",
+      "ProductDataCredential"
+    ],
+    "issuer": {
+      "id": "did:web:cbpvsvip-vc.gs1us.org",
+      "name": "GS1 US"
+    },
+    "id": "https://cbpvsvip-vc-api.gs1us.org/credentials/00860012682508",
+    "validFrom": "2024-08-21T18:16:10.890Z",
+    "name": "GS1 Product Data Credential",
+    "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. The product data credential is the Verifiable Credential that is shared with parties interested in the basic information associated with a product GTIN.",
+    "credentialSubject": {
+      "id": "https://id.gs1.org/01/00860012682508",
+      "keyAuthorization": "did:key:z6MkhVAyt5Yh1YT2Hb9Fpg5QF1XhEiqo3wMwpxPrQLnKwtZc",
+      "product": {
+        "gs1:brand": {
+          "gs1:brandName": "Chemical Brand"
+        },
+        "gs1:productDescription": "Chemical Product 1",
+        "gs1:gpcCategoryCode": "47100000",
+        "gs1:netContent": {
+          "gs1:value": "20",
+          "gs1:unitCode": "OZA"
+        },
+        "gs1:targetMarket": {
+          "gs1:targetMarketCountries": [
+            {
+              "gs1:countryCode": "US"
+            }
+          ]
+        }
+      }
+    },
+    "credentialSchema": {
+      "id": "https://id.gs1.org/vc/schema/v1/productdata",
+      "type": "JsonSchema"
+    },
+    "credentialStatus": {
+      "id": "https://cbpvsvip-vc.dev.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/11932",
+      "type": "BitstringStatusListEntry",
+      "statusPurpose": "revocation",
+      "statusListIndex": "11932",
+      "statusListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/"
+    }
+  }

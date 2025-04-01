@@ -1,0 +1,39 @@
+{
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://ref.gs1.org/gs1/vc/license-context"
+    ],
+    "id": "https://cbpvsvip-vc-api.gs1us.org/credentials/08600126825",
+    "type": [
+      "VerifiableCredential",
+      "GS1CompanyPrefixLicenseCredential"
+    ],
+    "issuer": {
+      "id": "did:web:cbpvsvip-vc.gs1us.org",
+      "name": "GS1 US"
+    },
+    "name": "GS1 Company Prefix License",
+    "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 identification keys.",
+    "validFrom": "2024-08-21T18:15:02.410Z",
+    "credentialSubject": {
+      "id": "did:web:platform.transmute.industries:organizations:org_LUAZf3rpt3CEy8v7",
+      "organization": {
+        "gs1:partyGLN": "0810159550000",
+        "gs1:organizationName": "Chemical Manufacturer"
+      },
+      "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/08",
+      "licenseValue": "08600126825",
+      "alternativeLicenseValue": "8600126825"
+    },
+    "credentialSchema": {
+      "id": "https://id.gs1.org/vc/schema/v1/companyprefix",
+      "type": "JsonSchema"
+    },
+    "credentialStatus": {
+      "id": "https://cbpvsvip-vc.dev.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/11925",
+      "type": "BitstringStatusListEntry",
+      "statusPurpose": "revocation",
+      "statusListIndex": "11925",
+      "statusListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/"
+    }
+  }
