@@ -10,7 +10,6 @@ import {
     verifyExternalCredential,
     gs1RulesResult,
     gs1RulesResultContainer,
-    verificationErrorCode,
     VerifiableCredential,
     VerifiablePresentation,
     gs1ValidatorRequest,

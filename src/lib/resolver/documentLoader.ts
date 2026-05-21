@@ -1,6 +1,6 @@
 import { getDocumentFromContextCache } from './document-cache.js'
 import { didWebResolve } from './did-web-resolve.js'
-import { didKeyResolve } from './did-key-resolve.js'
+// import { didKeyResolve } from './did-key-resolve.js'
 import { getExternalDocument } from './document-memory-cache.js'
 
 // Document Loader (Callback): Will be called when ever a document (DID, JSON, VC) is requested
@@ -22,8 +22,6 @@ export async function documentLoader(url: string) {
             documentUrl: url,
             document: await didWebResolve(url),
         }
-    } else if (url.startsWith('did:key:')) {
-        return await didKeyResolve(url)
     } else {
         const context = getDocumentFromContextCache(url)
 
