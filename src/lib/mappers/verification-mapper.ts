@@ -1,7 +1,7 @@
 import {
     credentialResultResponse,
     credentialVerifierTypeResult,
-} from '../../model/verifiable-credential.js'
+} from '../model/verifiable-credential.js'
 import {
     gs1RulesResult,
     gs1RulesResultContainer,
