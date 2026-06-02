@@ -9,7 +9,6 @@ import {
 } from './test-harness-log.js'
 import { testHarness } from './test-types.js'
 import { setup_jose_tests } from './jose/jose-test.js'
-//import { setup_data_integrity_tests } from './data-integrity/data-integrity-test.js'
 
 const testHarness: testHarness[] = []
 // setup_data_integrity_tests(testHarness);

@@ -24,5 +24,5 @@
         "typings-custom",
         "src/tests/**/**.ts"
     ],
-    "exclude": ["node_modules_old"]
+    "exclude": ["node_modules"]
 }

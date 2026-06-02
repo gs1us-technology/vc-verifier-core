@@ -14,10 +14,7 @@ import { documentContextConfig } from '../../contexts/document-context-config.js
 // Setup Local Document Context Cache
 // eslint-disable-next-line
 const LocalContextCache: any = {}
-const loadLocalCache = async () => {
-    // LocalContextCache['https://www.w3.org/2018/credentials/v1'] =
-    //     credentialsContexts.get(CREDENTIALS_CONTEXT_V1_URL)
-
+const loadLocalCache = () => {
     documentContextConfig.documents.forEach((context) => {
         LocalContextCache[context.url] = context.document
     })

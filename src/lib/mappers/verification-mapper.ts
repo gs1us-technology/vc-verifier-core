@@ -147,7 +147,7 @@ export async function createVerificationResult(
     gs1RulesResultContainer?.result?.forEach(
         (gs1RulesResult: gs1RulesResult) => {
             if (result.credentialResults == undefined) {
-                throw new Error('')
+                throw new Error('Credential Results is undefined')
             }
 
             // const gs1RulesResultResolveCredential = result.credentialResults.find((result: gs1RulesResult) => result.credentialId === gs1RulesResult.credentialId);

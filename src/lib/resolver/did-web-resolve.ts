@@ -1,3 +1,4 @@
+// jsonld still uses commonjs export style, so we need to use the default import syntax to get the createNodeMap and compact functions
 import pkg from 'jsonld'
 const { createNodeMap, compact } = pkg
 import { getDocumentFromContextCache } from './document-cache.js'

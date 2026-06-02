@@ -19,13 +19,13 @@ import { getJsonSchema } from '../jose/json-schema-service.js'
 
 // List of Supported Credential Types for GS1 Credential Validation
 export type GS1CredentialValidationOptions = {
-    credentialType: 'DataIntegrityProof' | 'JOSE'
+    credentialType: 'JOSE'
 }
 
 // Validator Function For Processing and Validating GS1 Credentials using the GS1 Rules Library
 export function gs1Validator(
     options: GS1CredentialValidationOptions = {
-        credentialType: 'DataIntegrityProof',
+        credentialType: 'JOSE',
     }
 ) {
     // Options Define How the GS1 Validator will handle different types of Credentials DIP vs JOSE
@@ -53,7 +53,6 @@ export function gs1Validator(
 
     // Callback function to verify external credential to ensure the VC passes proof, revocation and GS1 Rules
     // Processing Logic:
-    // Embedded (Data Integrity Proof) Credentials required Proof Verification Before Validating GS1 Rules
     // Enveloping (JOSE, COSE, SW_JWT) Require Verification when resolving the external credential
     const checkExternalCredential: verifyExternalCredential = async (
         credential: VerifiableCredential

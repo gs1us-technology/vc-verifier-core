@@ -1,6 +1,5 @@
 import { getDocumentFromContextCache } from './document-cache.js'
 import { didWebResolve } from './did-web-resolve.js'
-// import { didKeyResolve } from './did-key-resolve.js'
 import { getExternalDocument } from './document-memory-cache.js'
 
 // Document Loader (Callback): Will be called when ever a document (DID, JSON, VC) is requested
@@ -11,7 +10,7 @@ import { getExternalDocument } from './document-memory-cache.js'
 //    These are written and placed in ../lib/contexts/ folder, and accessed
 //    by the documentLoader below.
 // Document Loader Flow:
-//  Will try to resolve DID: Web and DID: Key Documents
+//  Will try to resolve DID: Web Documents
 //  Will Check Local Cache for Document
 //  If Document not in Local Cache, will try to get from External Source
 export async function documentLoader(url: string) {
